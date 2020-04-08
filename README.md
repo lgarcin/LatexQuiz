@@ -1,2 +1,0 @@
-# LatexQuiz
-Created with CodeSandbox

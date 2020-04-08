@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <div>
+    <textarea [(ngModel)]="test"></textarea>
+    <div #res>
+      <ng-katex [equation]="test" [options]="options"></ng-katex>
+    </div>
+    <div #obj>
+      <ng-katex [equation]="objectif" [options]="options"></ng-katex>
+    </div>
+  </div>
+</div>
