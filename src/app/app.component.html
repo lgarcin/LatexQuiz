@@ -1,6 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div>
   <div>
+    <mat-progress-bar mode="determinate" [value]="nb/questions.length*100"></mat-progress-bar>
     <textarea [(ngModel)]="test"></textarea>
     <div #res>
       <ng-katex [equation]="test" [options]="options"></ng-katex>
@@ -9,4 +9,6 @@
       <ng-katex [equation]="objectif" [options]="options"></ng-katex>
     </div>
   </div>
+  <button mat-raised-button (click)="decrease()" [disabled]="nb===0">Previous</button>
+  <button mat-raised-button (click)="increase()" [disabled]="nb===questions.length-1||!testEquality()">Next</button>
 </div>
