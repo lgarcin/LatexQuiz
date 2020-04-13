@@ -1,3 +1,16 @@
 div {
   text-align: center;
 }
+
+.container {
+  height: 100%;
+  padding: 10px;
+}
+
+mat-progress-bar {
+  height: 30px;
+}
+
+mat-sidenav-content {
+  padding: 10px;
+}

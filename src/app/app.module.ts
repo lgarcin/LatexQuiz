@@ -8,10 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatListModule } from '@angular/material/list'
+import { MatToolbarModule } from '@angular/material/toolbar'
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, KatexModule, BrowserAnimationsModule, MatButtonModule, MatProgressBarModule],
+  imports: [BrowserModule,
+    FormsModule,
+    KatexModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule],
   providers: [],
   bootstrap: [AppComponent]
 })

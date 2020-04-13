@@ -1,14 +1,32 @@
-<div>
-  <div>
-    <mat-progress-bar mode="determinate" [value]="nb/questions.length*100"></mat-progress-bar>
-    <textarea [(ngModel)]="test"></textarea>
-    <div #res>
-      <ng-katex [equation]="test" [options]="options"></ng-katex>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>Latex Quiz</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let cat of categoryNames | keyvalue"
+        (click)="category=cat.key">{{cat.value}}</button>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <mat-progress-bar mode="determinate" [value]="counter/questions[category].length*100"></mat-progress-bar>
+      <h1>{{categoryNames[category]}}</h1>
+      <div [hidden]="counter>=questions[category].length">
+        <textarea [(ngModel)]="userInput"></textarea>
+        <div #res>
+          <ng-katex [equation]="userInput" [options]="options"></ng-katex>
+        </div>
+        <div #obj>
+          <ng-katex [equation]="objectif" [options]="options"></ng-katex>
+        </div>
+        <button mat-raised-button (click)="counter=counter+1" [disabled]="!testEquality()">Suivant</button>
+      </div>
     </div>
-    <div #obj>
-      <ng-katex [equation]="objectif" [options]="options"></ng-katex>
+    <div [hidden]="counter<questions[category].length">
+      <h1>Terminé</h1>
     </div>
-  </div>
-  <button mat-raised-button (click)="decrease()" [disabled]="nb===0">Previous</button>
-  <button mat-raised-button (click)="increase()" [disabled]="nb===questions.length-1||!testEquality()">Next</button>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
