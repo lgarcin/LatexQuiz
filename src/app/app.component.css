@@ -1,16 +1,59 @@
-div {
-  text-align: center;
+mat-sidenav-container {
+  height: 100vh;
 }
 
-.container {
-  height: 100%;
-  padding: 10px;
+sidenav mat-toolbar {
+  background: inherit;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+mat-sidenav button {
+  font-weight: bold;
 }
 
 mat-progress-bar {
   height: 30px;
 }
 
-mat-sidenav-content {
-  padding: 10px;
+mat-sidenav-content h1 {
+  font-weight: bold;
+}
+
+ng-katex-paragraph {
+  margin-left: 50px;
+  font-size: 2rem;
+}
+
+ng-katex {
+  font-size: 2rem;
+}
+
+mat-form-field {
+  width: 80%;
+  font-size: 2rem;
+  padding: 20px;
+}
+
+mat-progress-bar {
+  margin: 0 auto;
+  width: 90%;
+}
+
+mat-sidenav-content button {
+  transform: scale(2);
+  margin: 50px;
+}
+
+div {
+  text-align: center;
 }

@@ -1,32 +1,49 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span>Latex Quiz</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<mat-sidenav-container class="container">
-  <mat-sidenav mode="side" opened>
+<mat-sidenav-container>
+
+  <mat-sidenav #drawer fixedInViewport [attr.role]="(isHandset | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset | async) ? 'over' : 'side'" [opened]="(isHandset | async) === false">
+    <mat-toolbar color="primary">Catégories</mat-toolbar>
     <mat-action-list>
-      <button mat-list-item *ngFor="let cat of categoryNames | keyvalue"
-        (click)="category=cat.key">{{cat.value}}</button>
+      <button mat-list-item *ngFor="let cat of categoryNames | keyvalue" (click)="category=cat.key">
+        <mat-icon>
+          navigate_next</mat-icon>{{cat.value}}
+      </button>
     </mat-action-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <div>
-      <mat-progress-bar mode="determinate" [value]="counter/questions[category].length*100"></mat-progress-bar>
-      <h1>{{categoryNames[category]}}</h1>
-      <div [hidden]="counter>=questions[category].length">
-        <textarea [(ngModel)]="userInput"></textarea>
-        <div #res>
-          <ng-katex [equation]="userInput" [options]="options"></ng-katex>
-        </div>
-        <div #obj>
-          <ng-katex [equation]="objectif" [options]="options"></ng-katex>
-        </div>
-        <button mat-raised-button (click)="counter=counter+1" [disabled]="!testEquality()">Suivant</button>
+    <mat-toolbar color="primary">
+      <button type="button" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset | async">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <ng-katex-paragraph paragraph="$\LaTeX$ Quiz"></ng-katex-paragraph>
+    </mat-toolbar>
+
+
+    <h1>{{categoryNames[category]}}</h1>
+    <mat-progress-bar mode="determinate" [value]="counter/questions[category].length*100"></mat-progress-bar>
+
+    <div [hidden]="counter>=questions[category].length">
+      <ng-katex [equation]="target" [options]="options"></ng-katex>
+      <mat-form-field appearance="outline">
+        <mat-label>Votre réponse</mat-label>
+        <textarea cdkTextareaAutosize matInput [(ngModel)]="userInput"></textarea>
+      </mat-form-field>
+      <div>
+        <ng-katex [equation]="userInput" [options]="options"></ng-katex>
       </div>
+      <button mat-raised-button color="primary" (click)="counter=counter+1" *ngIf="testEquality()">
+        <mat-icon>
+          navigate_next</mat-icon>
+      </button>
     </div>
-    <div [hidden]="counter<questions[category].length">
-      <h1>Terminé</h1>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="counter=0" *ngIf="counter>=questions[category].length">
+        <mat-icon>replay</mat-icon>
+      </button>
     </div>
+
   </mat-sidenav-content>
+
 </mat-sidenav-container>
