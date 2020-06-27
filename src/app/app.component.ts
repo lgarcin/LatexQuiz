@@ -33,7 +33,7 @@ export class AppComponent {
 
 	constructor(private breakpointObserver: BreakpointObserver) {
 		this.userInput = '';
-		this.category = Category.BASICS;
+		this.category = Category.SYMBOLS;
 		this.counter = +localStorage.getItem(JSON.stringify(this.category));
 	}
 
