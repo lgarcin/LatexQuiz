@@ -5,7 +5,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { categoryNames, categoryQuestions, Category } from './questions/questions.js';
+import { categoryNames, categoryQuestions, Category } from './questions/questions';
 
 @Component({
 	selector: 'app-root',
